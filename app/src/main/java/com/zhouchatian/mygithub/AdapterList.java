@@ -17,7 +17,7 @@ import java.util.List;
 
 public class AdapterList extends BaseAdapter {
     private LayoutInflater inflater;
-    private List list;
+    private List<TrendingBean> list;
 
     public AdapterList(List list, Context context) {
         super();
@@ -51,21 +51,28 @@ public class AdapterList extends BaseAdapter {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.simple_item, null);
             viewHolder = new ViewHolder();
-            viewHolder.image = (ImageView) convertView.findViewById(R.id.img_type);
-            viewHolder.name = (TextView) convertView.findViewById(R.id.tv_name);
-            viewHolder.size = (TextView) convertView.findViewById(R.id.desc);
+            viewHolder.title = (TextView) convertView.findViewById(R.id.title_tv);
+            viewHolder.synopsis = (TextView) convertView.findViewById(R.id.synopsis_tv);
+            viewHolder.language = (TextView) convertView.findViewById(R.id.language_tv);
+            viewHolder.totalStar = (TextView) convertView.findViewById(R.id.total_star_tv);
+            viewHolder.todayStar = (TextView) convertView.findViewById(R.id.today_star_tv);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.name.setText(list.get(position).toString());
-//        viewHolder.image.setImageResource(list.get(position).getType());
-//        viewHolder.size.setText(list.get(position).getSize());
+        viewHolder.title.setText(list.get(position).getTitle());
+        viewHolder.synopsis.setText(list.get(position).getSynopsis());
+        viewHolder.language.setText(list.get(position).getProgrammingLanguage());
+        viewHolder.totalStar.setText(list.get(position).getTotalStar());
+        viewHolder.todayStar.setText(list.get(position).getTodayStar());
+
         return convertView;
     }
     class ViewHolder {
-        public ImageView image;
-        public TextView name;
-        public TextView size;
+        public TextView title;
+        public TextView synopsis;
+        public TextView language;
+        public TextView totalStar;
+        public TextView todayStar;
     }
 }

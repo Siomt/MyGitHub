@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
         loadhtml.execute();
     }
     //异步获取信息
-private class Loadhtml extends AsyncTask<String, String, List<String>> {
+private class Loadhtml extends AsyncTask<String, String, List<TrendingBean>> {
         ProgressDialog bar;
          List list = new ArrayList();
         @Override
-        protected List<String> doInBackground(String... params) {
+        protected List<TrendingBean> doInBackground(String... params) {
             try {
                 Connection connect = HttpConnection.connect(Constans.NetAddress+"/trending");
                 connect.timeout(3000);
@@ -53,14 +55,27 @@ private class Loadhtml extends AsyncTask<String, String, List<String>> {
                 Elements element = divcontions.getElementsByTag("li");
                 Log.d("element", element.toString());
                 for(Element links : element) {
-                    String title = links.getElementsByTag("a").text();
-                    String link   = links.select("a").attr("href").trim();
+                    //String title = links.getElementsByTag("a").text();
+                    String title  = links.select("h3").text();
+                    String synopsis  = links.select("div.py-1").text();
+                    String programmingLanguage = links.select("span.mr-3").text();
+                    String totalStar = links.getElementsByTag("a").text();
+                    String todayStar = links.select("span.float-right").text();
+                    String link = links.select("a").attr("href").trim();
                     String url  = Constans.NetAddress+link;
+
 //                    ContentValues values = new ContentValues();
 //                    values.put("Title", title);
 //                    values.put("Url", url);
-//                    db.insert("Cach", values);
-                    list.add(title);
+//                   db.insert("Cach", values);
+                    TrendingBean bean = new TrendingBean();
+                    bean.setTitle(title);
+                    bean.setSynopsis(synopsis);
+                    bean.setProgrammingLanguage(programmingLanguage);
+                    bean.setTotalStar(totalStar);
+                    bean.setTodayStar(todayStar);
+                    bean.setUrl(url);
+                    list.add(bean);
                 }
 
             } catch (IOException e) {
