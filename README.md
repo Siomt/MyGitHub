@@ -1,9 +1,9 @@
 # MyGitHub
-一个自定义的Android版GitHub app
-[图片]()
+涓�涓嚜瀹氫箟鐨凙ndroid鐗圙itHub app
+![zhouchatian.com](https://github.com/TheSadFrog/MyGitHub/blob/master/pictures/2017-05-04_231833.png)
 
-## 版本记录
+## 鐗堟湰璁板綍
 **2017-05-04  v0.1**
-- 初始化版本，完成主要核心功能
-- jsoup加载数据
-- 第一个列表页
+- 鍒濆鍖栫増鏈紝瀹屾垚涓昏鏍稿績鍔熻兘
+- jsoup鍔犺浇鏁版嵁
+- 绗竴涓垪琛ㄩ〉
