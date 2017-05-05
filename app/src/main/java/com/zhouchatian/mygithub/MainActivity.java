@@ -29,7 +29,7 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
-    List<TrendingBean> list;
+    List<TrendingBean> list = new ArrayList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(MainActivity.this,ArticleActivity.class);
                 intent.putExtra("url",list.get(position).getUrl());
                 startActivity(intent);
             }
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     //异步获取信息
 private class Loadhtml extends AsyncTask<String, String, List<TrendingBean>> {
         ProgressDialog bar;
-         List list = new ArrayList();
+         //List list = new ArrayList();
         @Override
         protected List<TrendingBean> doInBackground(String... params) {
             try {
@@ -93,6 +93,7 @@ private class Loadhtml extends AsyncTask<String, String, List<TrendingBean>> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
             return list;
         }
 
@@ -103,7 +104,7 @@ private class Loadhtml extends AsyncTask<String, String, List<TrendingBean>> {
 //            bar.dismiss();
 //            ListItemAdapter adapter = new ListItemAdapter(context, usedatabase.getlist());
 //            listmenu.setAdapter(adapter);
-            list.addAll(result);
+
             AdapterList adapterList = new AdapterList(result , getApplicationContext());
             listView.setAdapter(adapterList);
         }
