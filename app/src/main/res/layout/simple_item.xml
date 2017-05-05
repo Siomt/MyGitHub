@@ -12,7 +12,8 @@
         android:maxLines="2"
         android:text="标题"
         android:paddingRight="30dp"
-        android:paddingLeft="10dp" />
+        android:paddingLeft="10dp"
+        android:textColor="#000"/>
 
     <TextView
         android:id="@+id/synopsis_tv"
@@ -21,7 +22,8 @@
         android:textSize="12sp"
         android:text="简短描述"
         android:paddingLeft="10dp"
-        android:layout_below="@id/title_tv"/>
+        android:layout_below="@id/title_tv"
+        android:textColor="#000"/>
 
     <TextView
         android:id="@+id/language_tv"
@@ -30,7 +32,8 @@
         android:text="java"
         android:textSize="12sp"
         android:paddingLeft="10dp"
-        android:layout_below="@id/synopsis_tv"/>
+        android:layout_below="@id/synopsis_tv"
+        android:textColor="#000"/>
 
     <TextView
         android:id="@+id/total_star_tv"
@@ -40,7 +43,8 @@
         android:text="30"
         android:paddingLeft="10dp"
         android:layout_below="@id/synopsis_tv"
-        android:layout_toRightOf="@id/language_tv"/>
+        android:layout_toRightOf="@id/language_tv"
+        android:textColor="#000"/>
 
     <TextView
         android:id="@+id/today_star_tv"
@@ -49,6 +53,7 @@
         android:textSize="12sp"
         android:text="10"
         android:paddingRight="10dp"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:textColor="#000"/>
 
 </RelativeLayout>
