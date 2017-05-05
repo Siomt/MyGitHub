@@ -2,10 +2,13 @@ package com.zhouchatian.mygithub;
 
 import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.jsoup.Connection;
@@ -19,13 +22,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.id.list;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
-
+    List<TrendingBean> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.lv);
         Loadhtml loadhtml = new Loadhtml();
         loadhtml.execute();
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent();
+                intent.putExtra("url",list.get(position).getUrl());
+                startActivity(intent);
+            }
+        });
     }
     //异步获取信息
 private class Loadhtml extends AsyncTask<String, String, List<TrendingBean>> {
@@ -91,6 +103,7 @@ private class Loadhtml extends AsyncTask<String, String, List<TrendingBean>> {
 //            bar.dismiss();
 //            ListItemAdapter adapter = new ListItemAdapter(context, usedatabase.getlist());
 //            listmenu.setAdapter(adapter);
+            list.addAll(result);
             AdapterList adapterList = new AdapterList(result , getApplicationContext());
             listView.setAdapter(adapterList);
         }

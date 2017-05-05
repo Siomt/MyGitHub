@@ -6,5 +6,7 @@ package com.zhouchatian.mygithub;
  */
 
 public class Constans {
-    public static final String NetAddress = "https://github.com";
+    public static final String NetAddress = "https://github.com";//github 跟地址
+    public static final String TrendingNetAddress = NetAddress + "/trending"; //热门地址
+
 }
