@@ -1,7 +1,6 @@
 package com.zhouchatian.mygithub;
 
 import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +21,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.id.list;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 
 public class MainActivity extends AppCompatActivity {
