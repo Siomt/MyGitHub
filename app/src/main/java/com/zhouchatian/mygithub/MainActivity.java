@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView = (ListView) findViewById(R.id.lv);
-        Loadhtml loadhtml = new Loadhtml();
-        loadhtml.execute();
+        LoadHtml loadHtml = new LoadHtml();
+        loadHtml.execute();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     //异步获取信息
-private class Loadhtml extends AsyncTask<String, String, List<TrendingBean>> {
+private class LoadHtml extends AsyncTask<String, String, List<TrendingBean>> {
         ProgressDialog bar;
          //List list = new ArrayList();
         @Override
