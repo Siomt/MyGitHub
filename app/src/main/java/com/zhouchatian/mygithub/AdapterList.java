@@ -22,7 +22,7 @@ public class AdapterList extends BaseAdapter {
     public AdapterList(List list, Context context) {
         super();
         this.list = list;
-        inflater = LayoutInflater.from(context);
+        this.inflater = LayoutInflater.from(context);
 
     }
 
