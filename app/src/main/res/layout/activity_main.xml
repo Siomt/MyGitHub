@@ -14,9 +14,8 @@
         android:layout_alignParentBottom="true"
         app:menu="@menu/navigation" />
 
-    <fragment
+    <RelativeLayout
         android:id="@+id/id_fragment_content"
-        android:name="com.zhouchatian.mygithub.fragment.TrendingFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@id/navigation"/>

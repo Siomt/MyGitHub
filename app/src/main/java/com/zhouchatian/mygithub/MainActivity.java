@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.Window;
 
@@ -32,10 +31,7 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        //setDefaultFragment();
-        final FragmentManager fm = getFragmentManager();
-        // 开启Fragment事务
-        final FragmentTransaction transaction = fm.beginTransaction();
+
         mNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         mNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -46,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
                         if(trendingFragment == null){
                             trendingFragment = new TrendingFragment();
                         }
-                        fm.beginTransaction().replace(R.id.id_fragment_content,trendingFragment).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.id_fragment_content,trendingFragment).commit();
                         break;
                     case R.id.bottom_book:
 
                         if(notificationsFragment == null){
                             notificationsFragment = new NotificationsFragment();
                         }
-                        fm.beginTransaction().replace(R.id.id_fragment_content,notificationsFragment).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.id_fragment_content,notificationsFragment).commit();
 
                         break;
                     case R.id.bottom_collection:
@@ -61,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                         if(dynamicFragment == null){
                             dynamicFragment = new DynamicFragment();
                         }
-                        fm.beginTransaction().replace(R.id.id_fragment_content,dynamicFragment).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.id_fragment_content,dynamicFragment).commit();
 
                         break;
                     case R.id.bottom_setting:
@@ -69,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         if(meFragment == null){
                             meFragment = new MeFragment();
                         }
-                        fm.beginTransaction().replace(R.id.id_fragment_content,meFragment).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.id_fragment_content,meFragment).commit();
 
                         break;
                 }
@@ -77,12 +73,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private void setDefaultFragment()
-    {
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
-        trendingFragment = new TrendingFragment();
-        transaction.replace(R.id.id_fragment_content, trendingFragment);
-        transaction.commit();
-    }
+
+
 }

@@ -1,5 +1,6 @@
 package com.zhouchatian.mygithub.fragment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -39,6 +40,7 @@ public class TrendingFragment extends Fragment{
 
     private ListView listView;
     List<TrendingBean> list = new ArrayList();
+    private Activity mActivity;
 
 
     @Nullable
@@ -46,6 +48,7 @@ public class TrendingFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_trending, container, false);
+        mActivity = getActivity();
         listView = (ListView) view.findViewById(R.id.lv);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -119,8 +122,10 @@ public class TrendingFragment extends Fragment{
 //            bar.dismiss();
 //            ListItemAdapter adapter = new ListItemAdapter(context, usedatabase.getlist());
 //            listmenu.setAdapter(adapter);
-
-            AdapterList adapterList = new AdapterList(result , getContext());
+            if(mActivity == null){
+                mActivity = getActivity();
+            }
+            AdapterList adapterList = new AdapterList(result , mActivity);
             listView.setAdapter(adapterList);
         }
 
