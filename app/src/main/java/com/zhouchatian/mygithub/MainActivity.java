@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.Window;
 
@@ -31,49 +32,47 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        setDefaultFragment();
-
+        //setDefaultFragment();
+        final FragmentManager fm = getFragmentManager();
+        // 开启Fragment事务
+        final FragmentTransaction transaction = fm.beginTransaction();
         mNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         mNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                FragmentManager fm = getFragmentManager();
-                // 开启Fragment事务
-                FragmentTransaction transaction = fm.beginTransaction();
+
                 switch (item.getItemId()) {
                     case R.id.bottom_home:
-                        if(trendingFragment != null){
+                        if(trendingFragment == null){
                             trendingFragment = new TrendingFragment();
                         }
-                        transaction.replace(R.id.id_fragment_content,trendingFragment);
+                        fm.beginTransaction().replace(R.id.id_fragment_content,trendingFragment).commit();
                         break;
                     case R.id.bottom_book:
 
-                        if(trendingFragment != null){
+                        if(notificationsFragment == null){
                             notificationsFragment = new NotificationsFragment();
                         }
-                        transaction.replace(R.id.id_fragment_content,notificationsFragment);
+                        fm.beginTransaction().replace(R.id.id_fragment_content,notificationsFragment).commit();
 
                         break;
                     case R.id.bottom_collection:
 
-                        if(trendingFragment != null){
+                        if(dynamicFragment == null){
                             dynamicFragment = new DynamicFragment();
                         }
-                        transaction.replace(R.id.id_fragment_content,dynamicFragment);
+                        fm.beginTransaction().replace(R.id.id_fragment_content,dynamicFragment).commit();
 
                         break;
                     case R.id.bottom_setting:
 
-                        if(trendingFragment != null){
+                        if(meFragment == null){
                             meFragment = new MeFragment();
                         }
-                        transaction.replace(R.id.id_fragment_content,meFragment);
+                        fm.beginTransaction().replace(R.id.id_fragment_content,meFragment).commit();
 
                         break;
                 }
-                // 事务提交
-                transaction.commit();
                 return true;
             }
         });

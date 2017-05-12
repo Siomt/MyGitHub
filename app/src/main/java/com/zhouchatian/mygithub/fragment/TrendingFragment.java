@@ -55,17 +55,11 @@ public class TrendingFragment extends Fragment{
                 startActivity(intent);
             }
         });
+        TrendingFragment.LoadHtml loadHtml = new TrendingFragment.LoadHtml();
+        loadHtml.execute();
         return view;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        TrendingFragment.LoadHtml loadHtml = new TrendingFragment.LoadHtml();
-        loadHtml.execute();
-
-    }
 
     //异步获取信息
     private class LoadHtml extends AsyncTask<String, String, List<TrendingBean>> {

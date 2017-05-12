@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/bottom_home"
         android:icon="@mipmap/ic_home_white_24dp"
@@ -18,4 +19,5 @@
         android:id="@+id/bottom_setting"
         android:icon="@mipmap/ic_tv_white_24dp"
         android:title="设置" />
+
 </menu>

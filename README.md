@@ -6,6 +6,9 @@
 ![zhouchatian.com](https://github.com/TheSadFrog/MyGitHub/blob/master/pictures/2017-05-06_233329.png)
 
 ## 版本记录
+**2017-05-11  v0.1.2**
+- 增加底部导航栏
+
 **2017-05-06  v0.1.1**
 - 增加详情界面
 
